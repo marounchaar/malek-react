@@ -32,43 +32,38 @@ const Navbar = ({ Ip }) => {
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+  const scrollToSection = (selector) => {
+    // Using querySelector instead of getElementById for more flexibility
+    const element = document.querySelector(selector);
+    if (element) {
+      const navbarHeight = 80; // Approximate navbar height
+      const offsetTop = element.getBoundingClientRect().top + window.pageYOffset - navbarHeight;
+      window.scrollTo({
+        top: offsetTop,
+        behavior: 'smooth'
+      });
+      setMenuOpen(false);
+      setActiveSubmenu(null);
+    }
+  };
+
   const buttons = [
-    { title: "Home", link: "/" },
-    { title: "The Firm", link: "/TheFirm" },
-    { title: "Our Team", link: "/OurTeam" },
-    {
-      title: "Practice Areas",
-      link: "practice/litigation",
-      submenu: [
-        {
-          title: "Litigation & Alternative Dispute Resolution",
-          link: "/practice/litigation",
-        },
-        { title: "Corporate & Commercial Law", link: "/practice/corporate" },
-        { title: "Corporate Structure", link: "/practice/structure" },
-        { title: "Contract Drafting", link: "/practice/contract" },
-        {
-          title: "International Trade & Investment",
-          link: "/practice/international",
-        },
-        { title: "Intellectual Property", link: "/practice/intellectual" },
-        { title: "Maritime & Aviation", link: "/practice/maritime" },
-        { title: "Property & Real Estate", link: "/practice/property" },
-        { title: "Banking & Finance", link: "/practice/banking" },
-        { title: "Labour & Employment", link: "/practice/labour" },
-      ],
+    { 
+      title: "Home", 
+      action: () => scrollToSection('.carousel-container') 
     },
-    { title: "Our Partners", link: "/OurPartners" },
-    {
-      title: "Legal Insights",
-      link: "/LegalInights",
-      submenu: [
-        { title: "News", link: "/LegalInights?category=news" },
-        { title: "Case Laws in Brief", link: "/LegalInights?category=case" },
-        { title: "Legal Tips", link: "/LegalInights?category=tips" },
-      ],
+    { 
+      title: "Biography", 
+      action: () => scrollToSection('.bio-wrapper') 
     },
-    { title: "Contact", link: "/ContactUs" },
+    { 
+      title: "History", 
+      action: () => scrollToSection('.history-container') 
+    },
+    { 
+      title: "Highlights", 
+      action: () => scrollToSection('.threeup') 
+    }
   ];
 
   return (
@@ -91,50 +86,15 @@ const Navbar = ({ Ip }) => {
             scrolled ? "scrolled" : ""
           }`}
         >
-          {buttons.map((label, index) => (
-            <li key={index} className={`navItem ${activeSubmenu === index ? 'open' : ''}`}>
-              {label.submenu ? (
-                <div 
-                  className="navLink"
-                  onClick={() => {
-                    if (window.innerWidth <= 1220) {
-                      setActiveSubmenu(activeSubmenu === index ? null : index);
-                    }
-                  }}
-                >
-                  {label.title}
-                </div>
-              ) : (
-                <Link 
-                  to={label.link} 
-                  className="navLink"
-                  onClick={() => {
-                    setMenuOpen(false);
-                    setActiveSubmenu(null);
-                  }}
-                >
-                  {label.title}
-                </Link>
-              )}
-
-              {label.submenu && (
-                <ul className="submenu">
-                  {label.submenu.map((sub, subIndex) => (
-                    <li key={subIndex} className="submenuItem">
-                      <Link 
-                        to={sub.link} 
-                        className="submenuLink"
-                        onClick={() => {
-                          setMenuOpen(false);
-                          setActiveSubmenu(null);
-                        }}
-                      >
-                        {sub.title}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              )}
+          {buttons.map((item, index) => (
+            <li key={index} className="navItem">
+              <div 
+                className="navLink"
+                onClick={item.action}
+                style={{ cursor: 'pointer' }}
+              >
+                {item.title}
+              </div>
             </li>
           ))}
         </ul>

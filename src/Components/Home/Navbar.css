@@ -11,6 +11,11 @@
   transition: all 0.3s ease-in-out;
 }
 
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px; /* Same as navbar height */
+}
+
 .logo {
   color: #0056b3;
   font-size: 1.5rem;
