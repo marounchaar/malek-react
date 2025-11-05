@@ -1,0 +1,170 @@
+:root{
+  --nav-height: 64px;
+  --accent: #1f2937;     /* slate-800 */
+  --accent-2: #ff6b6b;   /* CTA */
+  --nav-fg: #0f172a;     /* text color (will be overridden by state) */
+  --nav-bg: rgba(255,255,255,0.9);
+  --nav-border: rgba(15,23,42,0.06);
+}
+
+/* ===== Base ===== */
+.navbar{
+  position: sticky;
+  top: 0;
+  z-index: 60;
+  height: var(--nav-height);
+  transition: background 220ms ease, color 220ms ease, border-color 220ms ease;
+  border-bottom: 1px solid var(--nav-border);
+  backdrop-filter: blur(8px);
+}
+
+/* Overlay over the carousel (transparent, light text) */
+.navbar--overlay{
+  /* see-through so the carousel is the background */
+  background: linear-gradient(90deg, rgba(0,0,0,0.12), rgba(0,0,0,0.08));
+  --nav-fg: #ffffff;
+  --nav-border: transparent;
+}
+
+/* Solid after leaving the carousel (light background, dark text) */
+.navbar--solid{
+  background: var(--nav-bg);
+  --nav-fg: #0f172a;
+  --nav-border: rgba(15,23,42,0.06);
+}
+
+/* ===== Layout ===== */
+.navbar__container{
+  max-width: 1100px;
+  margin: 0 auto;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;  /* left-align brand + links */
+  padding: 0 1rem;
+  gap: 1rem;
+}
+
+.navbar__brand{
+  text-decoration: none;
+  color: var(--nav-fg);
+  display: flex;
+  align-items: center;
+}
+
+.navbar__logo{
+  font-weight: 700;
+  letter-spacing: 0.2px;
+  color: var(--nav-fg);
+  font-size: 1.02rem;
+}
+
+/* Desktop links left of the page (next to brand) */
+.navbar__nav{
+  display: flex;
+  gap: 0.6rem;
+  align-items: center;
+  margin-left: 0.75rem;
+}
+
+/* Toggle (hidden on desktop) */
+.navbar__toggle{
+  display: none;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  color: var(--nav-fg);
+  margin-left: auto;
+}
+
+/* Simple hamburger icon */
+.hamburger{
+  display: inline-block;
+  width: 22px;
+  height: 2px;
+  background: var(--nav-fg);
+  position: relative;
+}
+.hamburger::before,
+.hamburger::after{
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 22px;
+  height: 2px;
+  background: var(--nav-fg);
+  transition: transform 200ms ease;
+}
+.hamburger::before{ top: -6px; }
+.hamburger::after{  top:  6px; }
+
+/* Links */
+.navbar__link{
+  color: var(--nav-fg);
+  text-decoration: none;
+  padding: 0.45rem 0.6rem;
+  border-radius: 8px;
+  transition: background 150ms ease, transform 120ms ease, color 150ms ease;
+  font-weight: 500;
+}
+
+/* Hover states: adapt to overlay/solid automatically */
+.navbar--overlay .navbar__link:hover,
+.navbar--overlay .navbar__link:focus{
+  background: rgba(255,255,255,0.12);
+  color: #fff;
+  transform: translateY(-1px);
+}
+.navbar--solid .navbar__link:hover,
+.navbar--solid .navbar__link:focus{
+  background: rgba(15,23,42,0.05);
+  color: #0f172a;
+  transform: translateY(-1px);
+}
+
+/* CTA */
+.navbar__cta{
+  background: var(--accent-2);
+  color: #fff !important;
+  padding: 0.45rem 0.9rem;
+}
+.navbar__cta:hover{ filter: brightness(0.95); }
+
+/* ===== Mobile ===== */
+@media (max-width: 768px){
+  .navbar__toggle{ display: block; }
+  .navbar__nav{
+    position: fixed;
+    top: var(--nav-height);
+    right: 0;
+    height: calc(100% - var(--nav-height));
+    width: 260px;
+    background: linear-gradient(180deg, rgba(255,255,255,0.98), rgba(250,250,250,0.98));
+    box-shadow: -8px 12px 30px rgba(2,6,23,0.12);
+    transform: translateX(100%);
+    transition: transform 260ms cubic-bezier(.2,.9,.2,1);
+    flex-direction: column;
+    padding: 1rem;
+    gap: 0.35rem;
+    align-items: stretch;
+    margin-left: 0; /* reset desktop left margin */
+  }
+  .navbar__nav--open{ transform: translateX(0); }
+
+  .navbar__link{
+    padding: 0.9rem 1rem; width: 100%; border-radius: 10px;
+    color: #0f172a; /* ensure readable in drawer */
+  }
+
+  /* In overlay state, the drawer should still be readable (light) */
+  .navbar--overlay .navbar__nav{
+    background: linear-gradient(180deg, rgba(255,255,255,0.98), rgba(250,250,250,0.98));
+  }
+}
+
+/* Accessibility focus outline */
+.navbar__toggle:focus,
+.navbar__link:focus{
+  outline: 3px solid rgba(59,130,246,0.18);
+  outline-offset: 3px;
+}

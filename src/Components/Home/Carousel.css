@@ -1,0 +1,182 @@
+/* Carousel styles - responsive, accessible, and modern look */
+.carousel-container {
+	position: relative;
+	width: 100%;
+	height: 100vh; /* full viewport height */
+	min-height: 560px; /* fallback for very small viewports */
+	overflow: hidden;
+	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+	color: #ffffff;
+}
+
+/* Image / Video should cover the full viewport */
+.carousel-img {
+	width: 100%;
+	height: 100vh; /* full viewport height so carousel covers page */
+	min-height: 560px;
+	object-fit: cover;
+	display: block;
+}
+
+/* Slide content overlay */
+.slide-content {
+	position: absolute;
+	left: 6%;
+	top: 50%;
+	transform: translateY(-50%);
+	z-index: 8;
+	max-width: 52%;
+	background: linear-gradient(180deg, rgba(5,12,20,0.48) 0%, rgba(5,12,20,0.36) 100%);
+	padding: 28px 32px;
+	border-radius: 10px;
+	box-shadow: 0 8px 28px rgba(3, 9, 14, 0.55);
+	backdrop-filter: blur(4px);
+}
+
+.slide-content .title {
+	margin: 0 0 8px 0;
+	font-size: clamp(1.4rem, 3.6vw, 2.6rem);
+	line-height: 1.08;
+	letter-spacing: -0.02em;
+	color: #fff;
+	text-shadow: 0 3px 18px rgba(3,9,14,0.6);
+}
+
+.slide-content .subtitle {
+	margin: 0 0 10px 0;
+	font-size: clamp(0.95rem, 2.2vw, 1.15rem);
+	color: #e9eef6;
+	opacity: 0.95;
+}
+
+.slide-content .description {
+	margin: 0;
+	font-size: clamp(0.9rem, 1.8vw, 1rem);
+	color: #dfe9f5;
+	line-height: 1.5;
+	opacity: 0.95;
+}
+
+/* Navigation arrows */
+.carousel-prev,
+.carousel-next {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	width: 56px;
+	height: 56px;
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: rgba(255,255,255,0.06);
+	color: #ffffff;
+	cursor: pointer;
+	z-index: 12;
+	transition: background 180ms ease, transform 160ms ease, box-shadow 160ms ease;
+	box-shadow: 0 6px 18px rgba(2,6,10,0.35);
+	border: 1px solid rgba(255,255,255,0.06);
+}
+
+.carousel-prev:hover,
+.carousel-next:hover {
+	background: rgba(255,255,255,0.12);
+	transform: translateY(-50%) scale(1.04);
+}
+
+.carousel-prev { left: 14px; }
+.carousel-next { right: 14px; }
+
+/* Autoplay toggle */
+.autoplay-toggle {
+	position: absolute;
+	left: 14px;
+	bottom: 14px;
+	width: 44px;
+	height: 44px;
+	border-radius: 8px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: rgba(5,12,20,0.7);
+	color: #fff;
+	z-index: 14;
+	cursor: pointer;
+	transition: transform 140ms ease, background 140ms ease;
+	box-shadow: 0 6px 18px rgba(0,0,0,0.45);
+}
+
+.autoplay-toggle:hover { transform: translateY(-2px); }
+
+/* Slide counter */
+.slide-counter {
+	position: absolute;
+	right: 18px;
+	top: 18px;
+	z-index: 14;
+	background: rgba(0,0,0,0.35);
+	padding: 8px 12px;
+	border-radius: 999px;
+	font-size: 0.95rem;
+	color: #fff;
+	backdrop-filter: blur(3px);
+}
+
+/* Progress bar container */
+.progress-bar {
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	height: 6px;
+	background: linear-gradient(90deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
+	z-index: 15;
+}
+
+/* Make controls keyboard-focusable visuals (JSX uses divs) */
+.carousel-prev:focus,
+.carousel-next:focus,
+.autoplay-toggle:focus {
+	outline: 3px solid rgba(5,100,255,0.18);
+	outline-offset: 2px;
+}
+
+/* Responsive adjustments */
+
+
+@media (max-width: 1024px) {
+	.slide-content { max-width: 64%; left: 5%; padding: 22px; }
+	/* keep the carousel full height but allow slightly shorter on smaller screens if desired */
+	.carousel-img { height: calc(100vh); }
+}
+
+@media (max-width: 768px) {
+	.slide-content {
+		left: 50%;
+		top: auto;
+		bottom: 8%;
+		transform: translateX(-50%);
+		width: 92%;
+		max-width: 92%;
+		padding: 16px 18px;
+		border-radius: 8px;
+	}
+	.slide-content .title { font-size: 1.25rem; }
+	.slide-content .subtitle { font-size: 0.95rem; }
+	.slide-content .description { display: none; }
+	.carousel-prev, .carousel-next { width: 44px; height: 44px; }
+	.carousel-img { height: calc(100vh); }
+}
+
+@media (max-width: 420px) {
+	.carousel-img { height: calc(100vh); }
+	.carousel-prev, .carousel-next { width: 40px; height: 40px; }
+	.slide-content .title { font-size: 1rem; }
+}
+
+/* Respect users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+	.carousel-prev, .carousel-next, .autoplay-toggle { transition: none; }
+	.slide-content { transition: none; }
+}
+
