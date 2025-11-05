@@ -1,170 +1,266 @@
-:root{
-  --nav-height: 64px;
-  --accent: #1f2937;     /* slate-800 */
-  --accent-2: #ff6b6b;   /* CTA */
-  --nav-fg: #0f172a;     /* text color (will be overridden by state) */
-  --nav-bg: rgba(255,255,255,0.9);
-  --nav-border: rgba(15,23,42,0.06);
-}
-
-/* ===== Base ===== */
-.navbar{
-  position: sticky;
-  top: 0;
-  z-index: 60;
-  height: var(--nav-height);
-  transition: background 220ms ease, color 220ms ease, border-color 220ms ease;
-  border-bottom: 1px solid var(--nav-border);
-  backdrop-filter: blur(8px);
-}
-
-/* Overlay over the carousel (transparent, light text) */
-.navbar--overlay{
-  /* see-through so the carousel is the background */
-  background: linear-gradient(90deg, rgba(0,0,0,0.12), rgba(0,0,0,0.08));
-  --nav-fg: #ffffff;
-  --nav-border: transparent;
-}
-
-/* Solid after leaving the carousel (light background, dark text) */
-.navbar--solid{
-  background: var(--nav-bg);
-  --nav-fg: #0f172a;
-  --nav-border: rgba(15,23,42,0.06);
-}
-
-/* ===== Layout ===== */
-.navbar__container{
-  max-width: 1100px;
-  margin: 0 auto;
-  height: 100%;
+.navbarr {
+  background-color: transparent;
   display: flex;
   align-items: center;
-  justify-content: flex-start;  /* left-align brand + links */
-  padding: 0 1rem;
-  gap: 1rem;
+  height: 6rem;
+  position: fixed;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 1000;
+  transition: all 0.3s ease-in-out;
 }
 
-.navbar__brand{
-  text-decoration: none;
-  color: var(--nav-fg);
-  display: flex;
-  align-items: center;
+.logo {
+  color: #0056b3;
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-left: 2rem;
 }
 
-.navbar__logo{
-  font-weight: 700;
-  letter-spacing: 0.2px;
-  color: var(--nav-fg);
-  font-size: 1.02rem;
-}
-
-/* Desktop links left of the page (next to brand) */
-.navbar__nav{
-  display: flex;
-  gap: 0.6rem;
-  align-items: center;
-  margin-left: 0.75rem;
-}
-
-/* Toggle (hidden on desktop) */
-.navbar__toggle{
+.menuIcon {
   display: none;
-  background: transparent;
-  border: 0;
+  font-size: 2rem;
+  color: White;
   cursor: pointer;
-  color: var(--nav-fg);
-  margin-left: auto;
+  z-index: 1001;
 }
 
-/* Simple hamburger icon */
-.hamburger{
-  display: inline-block;
-  width: 22px;
-  height: 2px;
-  background: var(--nav-fg);
-  position: relative;
+.navList {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
-.hamburger::before,
-.hamburger::after{
+
+.navbar-right {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+}
+
+/* Make sure the embedded search doesn't grow the navbar on small screens */
+.navbar-right > * {
+  max-width: 320px;
+}
+
+/* Navigation item */
+.navItem {
+  position: relative;
+  transition: transform 0.3s ease;
+  color: #fff;
+}
+
+/* Navigation link */
+.navLink {
+  position: relative;
+  text-decoration: none;
+  /* color: var(--primary-color); */
+  color: #fff;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  display: inline-block;
+  overflow: hidden;
+}
+
+/* Underline animation */
+.navLink::after {
   content: "";
   position: absolute;
+  bottom: 0;
   left: 0;
-  width: 22px;
-  height: 2px;
-  background: var(--nav-fg);
-  transition: transform 200ms ease;
+  height: 3px;
+  width: 100%;
+  background-color: #ff0000;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.3s ease-in-out;
 }
-.hamburger::before{ top: -6px; }
-.hamburger::after{  top:  6px; }
 
-/* Links */
-.navbar__link{
-  color: var(--nav-fg);
-  text-decoration: none;
-  padding: 0.45rem 0.6rem;
+.navLink:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+/* Submenu container */
+.submenu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: white;
   border-radius: 8px;
-  transition: background 150ms ease, transform 120ms ease, color 150ms ease;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+  padding: 0.5rem 0;
+  display: none;
+  /* keep a sensible minimum but allow it to shrink on very small screens */
+  min-width: min(300px, 90vw);
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+@media (min-width: 1221px) {
+  .navItem:hover .submenu {
+    display: block;
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+.navItem.open .submenu {
+  display: block;
+  opacity: 1;
+  visibility: visible;
+}
+/* Submenu item */
+.submenuItem {
+  padding: 0.5rem 1.5rem;
+  list-style: none;
+}
+.submenuLink {
+  color: var(--primary-color);
+  text-decoration: none;
   font-weight: 500;
+  display: block;
+  transition: background-color 0.3s ease;
 }
 
-/* Hover states: adapt to overlay/solid automatically */
-.navbar--overlay .navbar__link:hover,
-.navbar--overlay .navbar__link:focus{
-  background: rgba(255,255,255,0.12);
-  color: #fff;
-  transform: translateY(-1px);
+.submenuItem:hover {
+  background-color: rgba(0, 0, 0, 0.04);
 }
-.navbar--solid .navbar__link:hover,
-.navbar--solid .navbar__link:focus{
-  background: rgba(15,23,42,0.05);
-  color: #0f172a;
-  transform: translateY(-1px);
+.navLink.donate {
+  background: var(--third-color) !important;
+  color: white;
+  border-radius: 20px;
+  color: white;
+  padding: 0.5rem 1rem;
+  transition: background 0.3s ease-in-out;
 }
 
-/* CTA */
-.navbar__cta{
-  background: var(--accent-2);
-  color: #fff !important;
-  padding: 0.45rem 0.9rem;
+.navLink.donate:hover {
+  background: transparent !important;
+  color: var(--third-color);
 }
-.navbar__cta:hover{ filter: brightness(0.95); }
 
-/* ===== Mobile ===== */
-@media (max-width: 768px){
-  .navbar__toggle{ display: block; }
-  .navbar__nav{
+.navbar-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+@media (max-width: 1220px) {
+  .navbar-container {
+    justify-content: space-between;
+    padding: 0 1.5rem;
+  }
+
+  .menuIcon {
+    display: block;
+    margin-left: auto; 
+  }
+  
+  /* hide desktop search on small screens (the menu can include its own search if desired) */
+  .navbar-right {
+    display: none;
+  }
+
+  .navList {
     position: fixed;
-    top: var(--nav-height);
-    right: 0;
-    height: calc(100% - var(--nav-height));
-    width: 260px;
-    background: linear-gradient(180deg, rgba(255,255,255,0.98), rgba(250,250,250,0.98));
-    box-shadow: -8px 12px 30px rgba(2,6,23,0.12);
-    transform: translateX(100%);
-    transition: transform 260ms cubic-bezier(.2,.9,.2,1);
+    top: 0;
+    right: -100%;
+    height: 100vh;
+    width: 280px;
+    background-color: var(--primary-color);
     flex-direction: column;
-    padding: 1rem;
-    gap: 0.35rem;
-    align-items: stretch;
-    margin-left: 0; /* reset desktop left margin */
-  }
-  .navbar__nav--open{ transform: translateX(0); }
-
-  .navbar__link{
-    padding: 0.9rem 1rem; width: 100%; border-radius: 10px;
-    color: #0f172a; /* ensure readable in drawer */
+    align-items: flex-start;
+    padding-top: 6rem;
+    transition: right 0.3s ease;
+    z-index: 1000;
+    overflow-y: auto;
   }
 
-  /* In overlay state, the drawer should still be readable (light) */
-  .navbar--overlay .navbar__nav{
-    background: linear-gradient(180deg, rgba(255,255,255,0.98), rgba(250,250,250,0.98));
+  .navList.open {
+    right: 0;
+  }
+
+  .navItem {
+    width: 100%;
+    padding:0rem 0.6rem ;
+    text-align: left;
+    margin-bottom: 1rem;
+  }
+
+  .navLink {
+    color: #fff;
+    font-size: 1.1rem;
+  }
+
+  .navLink::after {
+    background-color: #fff;
+  }
+
+  .submenu {
+    position: static;
+    display: none;
+    background-color: transparent;
+    box-shadow: none;
+    padding: 0;
+  }
+
+  .navItem.open .submenu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .submenuItem {
+    padding: 0.5rem 1rem;
+  }
+
+  .submenuLink {
+    color: #fff;
+    font-size: 0.7rem;
+  }
+
+  .submenuLink:hover {
+    background-color: rgba(255, 255, 255, 0.1);
   }
 }
+.navbarr.scrolled {
+  background-color: #fff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
 
-/* Accessibility focus outline */
-.navbar__toggle:focus,
-.navbar__link:focus{
-  outline: 3px solid rgba(59,130,246,0.18);
-  outline-offset: 3px;
+.navbarr.scrolled .navLink {
+  color: #1b2b57 !important;
+}
+
+.navbarr.scrolled .menuIcon svg {
+  color: #1b2b57 !important;
+}
+
+/* Keep mobile menu text white even when navbar is scrolled */
+.navList.open.scrolled .navItem .navLink {
+  color: #fff !important;
+}
+
+/* Adjust the underline color for scrolled state */
+.navbarr.scrolled .navLink::after {
+  background-color: #1b2b57;
+}
+.navbar-container {
+  align-items: center;
+  display: flex;
+  gap: 20px;
+  height: 8vh;
+  padding: 0 20px;
+  width: 100%;
 }

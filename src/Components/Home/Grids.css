@@ -1,0 +1,131 @@
+:root {
+  --primary: #0c2c3f;
+  --muted: #667085;
+  --ring: rgba(12,44,63,0.12);
+}
+
+/* wrapper */
+.threeup {
+  max-width: 1150px;
+  margin: 0 auto;
+}
+
+/* header + arrows */
+.threeup__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+  gap: 12px;
+}
+.threeup__title {
+  font-weight: 700;
+  font-size: clamp(1.25rem, 2vw, 1.6rem);
+  color: var(--primary);
+  margin: 0;
+}
+.threeup__arrows {
+  display: flex;
+  gap: 8px;
+}
+.threeup__btn {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  border: 1px solid rgba(12,44,63,0.12);
+  background: #fff;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, filter 0.15s ease;
+}
+.threeup__btn svg {
+  width: 22px;
+  height: 22px;
+}
+.threeup__btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 24px var(--ring);
+}
+
+/* card */
+.threeup__card {
+  background: #fff;
+  border: 1px solid rgba(12,44,63,0.07);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(2,6,23,0.06);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  position: relative;
+}
+
+.threeup__image {
+  width: 100%;
+  padding-top: 60%; /* 3:2 aspect ratio */
+  background-size: cover;
+  background-position: center;
+}
+
+/* content area */
+.threeup__body {
+  flex: 1; /* fill remaining space */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 16px 16px 64px; /* space for the fixed button */
+  position: relative;
+}
+
+.threeup__card-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin: 0;
+  line-height: 1.25;
+}
+
+.threeup__card-text {
+  margin: 0.5rem 0 0;
+  color: var(--muted);
+  line-height: 1.6;
+  font-size: 0.96rem;
+}
+
+/* “Learn More” button — fixed at bottom for alignment */
+.threeup__learn {
+  position: absolute;
+  left: 16px;
+  bottom: 16px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  background: var(--primary);
+  color: #fff;
+  text-decoration: none;
+  padding: 0.45rem 0.9rem;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  letter-spacing: 0.2px;
+  transition: background 0.2s ease, transform 0.15s ease;
+}
+
+.threeup__learn:hover {
+  background: #143f5a;
+  transform: translateY(-1px);
+}
+
+/* ensure consistent slide height */
+.swiper-slide {
+  height: auto;
+  display: flex;
+}
+
+.swiper-slide > .threeup__card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}

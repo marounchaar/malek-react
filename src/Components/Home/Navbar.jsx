@@ -1,75 +1,151 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
+import { GiHamburgerMenu } from "react-icons/gi";
+import logo from "../../assets/law.png";
+import logoscrolled from "../../assets/law.png";
 import "./Navbar.css";
 
-const Navbar = () => {
-  const [open, setOpen] = useState(false);
-  const [overlay, setOverlay] = useState(true); // true when over the carousel/hero
-
-  const toggle = () => setOpen((s) => !s);
-  const close = () => setOpen(false);
+const Navbar = ({ Ip }) => {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [home, setHome] = useState(false);
+  const [activeSubmenu, setActiveSubmenu] = useState(null);
+  const location = useLocation();
 
   useEffect(() => {
-    const nav = document.getElementById("navbar");
-    const hero = document.getElementById("home"); // your carousel/hero section should have id="home"
+    if (location.pathname === "/") {
+      setHome(true);
+    } else {
+      setHome(false);
+    }
+  }, [location]);
 
-    const compute = () => {
-      const navH = parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--nav-height")) || 64;
-      const heroBottom = (hero?.getBoundingClientRect().bottom ?? 0);
-      // If bottom of hero is still below the navbar, keep overlay mode
-      setOverlay(heroBottom > navH);
+  useEffect(() => {
+    const handleScroll = () => {
+      const carouselHeight = document.querySelector('.carousel-container')?.offsetHeight || 100;
+      if (window.scrollY > carouselHeight - 80) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
     };
-
-    compute();
-    window.addEventListener("scroll", compute, { passive: true });
-    window.addEventListener("resize", compute);
-    return () => {
-      window.removeEventListener("scroll", compute);
-      window.removeEventListener("resize", compute);
-    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
-  // When navigating via hash links, also close the drawer and re-evaluate
-  const onNavClick = (e) => {
-    close();
-    // Allow default anchor jump, then recompute overlay on next frame
-    requestAnimationFrame(() => {
-      const evt = new Event("scroll");
-      window.dispatchEvent(evt);
-    });
-  };
+  const buttons = [
+    { title: "Home", link: "/" },
+    { title: "The Firm", link: "/TheFirm" },
+    { title: "Our Team", link: "/OurTeam" },
+    {
+      title: "Practice Areas",
+      link: "practice/litigation",
+      submenu: [
+        {
+          title: "Litigation & Alternative Dispute Resolution",
+          link: "/practice/litigation",
+        },
+        { title: "Corporate & Commercial Law", link: "/practice/corporate" },
+        { title: "Corporate Structure", link: "/practice/structure" },
+        { title: "Contract Drafting", link: "/practice/contract" },
+        {
+          title: "International Trade & Investment",
+          link: "/practice/international",
+        },
+        { title: "Intellectual Property", link: "/practice/intellectual" },
+        { title: "Maritime & Aviation", link: "/practice/maritime" },
+        { title: "Property & Real Estate", link: "/practice/property" },
+        { title: "Banking & Finance", link: "/practice/banking" },
+        { title: "Labour & Employment", link: "/practice/labour" },
+      ],
+    },
+    { title: "Our Partners", link: "/OurPartners" },
+    {
+      title: "Legal Insights",
+      link: "/LegalInights",
+      submenu: [
+        { title: "News", link: "/LegalInights?category=news" },
+        { title: "Case Laws in Brief", link: "/LegalInights?category=case" },
+        { title: "Legal Tips", link: "/LegalInights?category=tips" },
+      ],
+    },
+    { title: "Contact", link: "/ContactUs" },
+  ];
 
   return (
-    <header
-      className={`navbar ${overlay ? "navbar--overlay" : "navbar--solid"}`}
-      id="navbar"
-    >
-      <div className="navbar__container">
-        <a href="#home" className="navbar__brand" onClick={onNavClick}>
-          <span className="navbar__logo">MalekShaar</span>
-        </a>
+    <div className={`navbarr ${scrolled ? "scrolled" : ""}`}>
+      <div className="navbar-container">
+        <Link to="/" className="logo">
+          <img
+            src={scrolled ? logoscrolled : logo}
+            alt="logo"
+            style={{ width: "13rem" }}
+            loading="lazy"
+          />
+        </Link>
+        <div className="menuIcon" onClick={() => setMenuOpen(!menuOpen)}>
+          <GiHamburgerMenu size={24} color={scrolled ? "#1b2b57" : "white"} />
+        </div>
 
-        <button
-          className="navbar__toggle"
-          aria-label="Toggle navigation"
-          aria-expanded={open}
-          onClick={toggle}
+        <ul
+          className={`navList ${menuOpen ? "open" : ""} ${
+            scrolled ? "scrolled" : ""
+          }`}
         >
-          <span className="hamburger" />
-        </button>
+          {buttons.map((label, index) => (
+            <li key={index} className={`navItem ${activeSubmenu === index ? 'open' : ''}`}>
+              {label.submenu ? (
+                <div 
+                  className="navLink"
+                  onClick={() => {
+                    if (window.innerWidth <= 1220) {
+                      setActiveSubmenu(activeSubmenu === index ? null : index);
+                    }
+                  }}
+                >
+                  {label.title}
+                </div>
+              ) : (
+                <Link 
+                  to={label.link} 
+                  className="navLink"
+                  onClick={() => {
+                    setMenuOpen(false);
+                    setActiveSubmenu(null);
+                  }}
+                >
+                  {label.title}
+                </Link>
+              )}
 
-        <nav className={`navbar__nav ${open ? "navbar__nav--open" : ""}`}>
-          <a href="#home" className="navbar__link" onClick={onNavClick}>
-            Home
-          </a>
-          <a href="#bio" className="navbar__link" onClick={onNavClick}>
-            Bio
-          </a>
-          <a href="#history" className="navbar__link" onClick={onNavClick}>
-            History
-          </a>
-        </nav>
+              {label.submenu && (
+                <ul className="submenu">
+                  {label.submenu.map((sub, subIndex) => (
+                    <li key={subIndex} className="submenuItem">
+                      <Link 
+                        to={sub.link} 
+                        className="submenuLink"
+                        onClick={() => {
+                          setMenuOpen(false);
+                          setActiveSubmenu(null);
+                        }}
+                      >
+                        {sub.title}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </li>
+          ))}
+        </ul>
+
+
+
+        {menuOpen && (
+          <div className="navbar-overlay" onClick={() => setMenuOpen(false)} />
+        )}
       </div>
-    </header>
+    </div>
   );
 };
 
