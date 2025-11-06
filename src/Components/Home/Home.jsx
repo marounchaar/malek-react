@@ -8,6 +8,7 @@ import "./Carousel.css";
 const Home = () => {
 	return (
 		<div className="home-container">
+			{/* <Navbar />   */}
 			<Carousel />
 			<Bio />
 			<History />
