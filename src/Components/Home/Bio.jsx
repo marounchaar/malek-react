@@ -5,9 +5,11 @@ const SBiography = () => {
   const shortBiography = [
     {
       initials: "RC",
-      title:
-        "Central Banker | Commercial Banker | Strategist & Leadership Expert | Social & Economic Reformist",
-      shortbio: `Thirty-five years in commercial and central banking. Seasoned finance professional with proven expertise in public and private sectors in the Middle East and Africa (MEA). International strategist in central banking, regulation, and supervision. Expert in financial markets, including direct operational experience in commercial banking in Lebanon and the United Arab Emirates. Board member of international and regional monetary and financial organizations. Work under challenging political and economic environments, mitigating risks, and fostering international regulatory compliance and efficient operations of local financial markets. Committed to the advancement of Lebanon - the Message as a home for diversity and a platform for universal solidarity through cooperation between its residents and its expatriates, as well as through creative interaction between its citizens beyond their affiliations. Social and economic reformist with established record in economic inclusion, poverty alleviation, women and community empowerment. University lecturer, writer and speaker on strategy, leadership, governance, pluralism, citizenship, organizational and personal development, monetary policy, finance, and economics.`,
+      title: "المفتي كركيزة للوحدة الوطنية",
+      shortbio: `كرّس الشيخ الدكتور مالك الشعار حياته للخدمة كرئيس ديني مؤسسي للطائفة السنية في شمال لبنان وطرابلس، وهي ولاية ذات أهمية حرجة ضمن المشهد الطائفي والجيوسياسي المعقد في لبنان. كمفتي طرابلس والشمال، يمثل الشيخ الشعار المؤسسة الدينية السنية الرسمية المعتمدة من الدولة، دار الفتوى. تميزت ولايته بالتحدي الاستثنائي المتمثل في توجيه هذه المؤسسة الحيوية عبر فترات من التقلبات الإقليمية الشديدة والصراع الطائفي المحلي العميق، خاصة في طرابلس، التي تخدم تاريخياً كنقطة اشتعال وطنية رئيسية.
+كانت المهمة الأساسية لقيادة الشيخ الشعار هي الدفاع الثابت عن مؤسسات الدولة والترويج الدؤوب للسلم الأهلي. إنجازه مدى الحياة متجذر في هذه الصلابة المؤسسية والتزامه الراسخ بالمبادئ الوطنية المعتدلة في مواجهة التهديدات الأمنية المباشرة والموثوقة. سلطته معترف بها كضرورة هيكلية للحفاظ على التوازن الاجتماعي الديني في الشمال. عندما فشلت الهيئة الرسمية لدار الفتوى في توفير قيادة قوية، كما لوحظ خلال الأزمات، كان هناك ميل فوري ومقلق لـ"هيئات دينية أكثر غير رسمية وأكثر راديكالية" لإزاحة سلطة المؤسسة.
+يكشف الصعود الموثق للتطرف خلال الأوقات التي تم فيها المساس بالقيادة المؤسسية أن قائداً بمكانة الشيخ الشعار ليس مجرد شخصية دينية؛ إنه رادع أساسي ضد التطرف. وجوده الفيزيائي، ومنبره العام، ورسالته المتسقة تضفي الشرعية على الإسلام المعتدل المعتمد من الدولة. تم إثبات الأهمية الاستراتيجية لقيادته بعمق من خلال عودته العازمة من المنفى المؤقت. في مواجهة تهديدات القتل المستمرة، كان قراره باستئناف واجباته بياناً سياسياً قوياً. حوّل هذا الفعل قراراً أمنياً شخصياً إلى تأكيد استراتيجي للتحدي المؤسسي، مؤكداً مركزية وسلطة دار الفتوى في طرابلس ومظهراً ثقة راسخة في الحماية التي توفرها الدولة اللبنانية وجيشها.
+`,
     },
   ];
 
@@ -15,10 +17,10 @@ const SBiography = () => {
     <div className="container my-5 bio-wrapper">
       {/* Section header */}
       <div className="bio-section">
-        <h2 className="section-title">Short Biography</h2>
+        <h2 className="section-title">نبذة مختصرة</h2>
         <div className="bio-divider-vert"></div>
         <p className="section-subtitle">
-          Central Banker | Commercial Banker | Strategist & Leadership Expert | Social & Economic Reformist
+          المفتي كركيزة للوحدة الوطنية
         </p>
       </div>
 
@@ -29,13 +31,11 @@ const SBiography = () => {
             <span className="raed_initials">{item.initials}</span>
           </div>
 
-          <h5 className="bio-role mb-3">
-            {item.title}
-          </h5>
+          <h5 className="bio-role mb-3">{item.title}</h5>
 
           <p className="bio-text">{item.shortbio}</p>
 
-          <button className="bio-btn mt-4">Read More →</button>
+          <button className="bio-btn mt-4">اقرأ المزيد →</button>
         </div>
       ))}
     </div>

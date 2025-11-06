@@ -9,6 +9,8 @@
   width: 100%;
   z-index: 1000;
   transition: all 0.3s ease-in-out;
+  direction: rtl;
+  
 }
 
 html {
@@ -53,7 +55,7 @@ html {
 .navItem {
   position: relative;
   transition: transform 0.3s ease;
-  color: #fff;
+  color: var(--fifth-color);
 }
 
 /* Navigation link */
@@ -78,7 +80,7 @@ html {
   left: 0;
   height: 3px;
   width: 100%;
-  background-color: #ff0000;
+  background-color: var(--fifth-color);
   transform: scaleX(0);
   transform-origin: right;
   transition: transform 0.3s ease-in-out;

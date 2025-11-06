@@ -6,7 +6,6 @@
 
 /* wrapper */
 .threeup {
-  max-width: 1150px;
   margin: 0 auto;
 }
 
@@ -48,7 +47,6 @@
   box-shadow: 0 10px 24px var(--ring);
 }
 
-/* card */
 .threeup__card {
   background: #fff;
   border: 1px solid rgba(12,44,63,0.07);

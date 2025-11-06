@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { GiHamburgerMenu } from "react-icons/gi";
-import logo from "../../assets/law.png";
+// import logo from "../../assets/law.png";
 import logoscrolled from "../../assets/law.png";
 import "./Navbar.css";
 
@@ -49,19 +49,19 @@ const Navbar = ({ Ip }) => {
 
   const buttons = [
     { 
-      title: "Home", 
+      title: "الرئيسية", 
       action: () => scrollToSection('.carousel-container') 
     },
     { 
-      title: "Biography", 
+      title: "السيرة الذاتية", 
       action: () => scrollToSection('.bio-wrapper') 
     },
     { 
-      title: "History", 
+      title: "السيرة", 
       action: () => scrollToSection('.history-container') 
     },
     { 
-      title: "Highlights", 
+      title: "أبرز المحطات", 
       action: () => scrollToSection('.threeup') 
     }
   ];
@@ -70,12 +70,12 @@ const Navbar = ({ Ip }) => {
     <div className={`navbarr ${scrolled ? "scrolled" : ""}`}>
       <div className="navbar-container">
         <Link to="/" className="logo">
-          <img
+          {/* <img
             src={scrolled ? logoscrolled : logo}
             alt="logo"
             style={{ width: "13rem" }}
             loading="lazy"
-          />
+          /> */}
         </Link>
         <div className="menuIcon" onClick={() => setMenuOpen(!menuOpen)}>
           <GiHamburgerMenu size={24} color={scrolled ? "#1b2b57" : "white"} />

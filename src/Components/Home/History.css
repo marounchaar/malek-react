@@ -32,7 +32,7 @@
 
 .newhistory-item {
   display: flex;
-  margin-bottom: 4rem;
+  /* margin-bottom: 4rem; */
   position: relative;
   width: 100%;
   opacity: 0;

@@ -1,43 +1,35 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect,lazy } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
-
-import "./Carousel.css";
 import {
   MdNavigateNext,
   MdNavigateBefore,
   MdPause,
   MdPlayArrow,
 } from "react-icons/md";
-
-import Carousel1 from "../../assets/law.png";
 import CarouselVideo from "../../assets/carousel2.mp4";
+import CarouselData from "./CarouselArray";
+import "./Carousel.css";
 
-const carouselData = [
-  {
-    img: Carousel1,
-    title: 'Intellectual Property & AI-Innovation:Secure Your Edge',
-    subtitle:
-      "In a world increasingly shaped by artificial intelligence, protecting innovation demands more than traditional legal strategies.",
-    description:
-      "At SSBLaw, we understand how AI disrupts the rule, from automated content generation to algorithmic inventions, from data-driven decision tools to unseen model biases. We help you navigate this evolving landscape and ensure your IP remains enforceable, defensible, and future-ready.",
-  },
-  {
-    img: "",
-    video: CarouselVideo,
-    title: "AI-Invention & Patents",
-    subtitle: "Helping clients patent inventions that incorporate machine learning, AI architectures, or autonomous logic.",
-    description: "Ensuring compliance with patent eligibility and novelty standards. Advising on authorship, ownership, and copyright of work produced in whole or part by AI; drafting robust licensing agreements to avoid ambiguity.",
-  },
-  // {
-  //   img: Carousel3,
-  //   title: "Carousel1",
-  //   subtitle: "Carousel1",
-  //   description: "Description Carousel3",
-  // },
-];
+// const carouselData = [
+//   {
+//     img: Carousel1,
+//     title: 'Intellectual Property & AI-Innovation:Secure Your Edge',
+//     subtitle:
+//       "In a world increasingly shaped by artificial intelligence, protecting innovation demands more than traditional legal strategies.",
+//     description:
+//       "At SSBLaw, we understand how AI disrupts the rule, from automated content generation to algorithmic inventions, from data-driven decision tools to unseen model biases. We help you navigate this evolving landscape and ensure your IP remains enforceable, defensible, and future-ready.",
+//   },
+//   {
+//     img: "",
+//     video: CarouselVideo,
+//     title: "AI-Invention & Patents",
+//     subtitle: "Helping clients patent inventions that incorporate machine learning, AI architectures, or autonomous logic.",
+//     description: "Ensuring compliance with patent eligibility and novelty standards. Advising on authorship, ownership, and copyright of work produced in whole or part by AI; drafting robust licensing agreements to avoid ambiguity.",
+//   },
+// ];
 
 const Carousel = () => {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -79,7 +71,7 @@ const Carousel = () => {
           setProgress(0);
         }}
       >
-        {carouselData.map((src, i) => (
+        {CarouselData.map((src, i) => (
   <SwiperSlide key={i}>
     {src.video ? (
       <video

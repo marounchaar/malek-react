@@ -1,0 +1,64 @@
+.footer .short-link a,
+.footer .help-link a,
+.footer .contact-link a {
+  transition: 0.5s;
+}
+
+.footer .short-link a:hover,
+.footer .help-link a:hover,
+.footer .contact-link a:hover {
+  letter-spacing: 0.2px;
+}
+
+.footer {
+  background: #0c2c3f;
+  padding-right: 5rem;
+   padding-left:5rem;
+}
+
+.footer .hightech-link a svg {
+  color: #fff;
+  border: 0;
+  transition: all 0.3s ease-in;
+}
+
+.footer .hightech-link a:first-child:hover svg {
+  color: #ff0000;
+  border: 0;
+  transition: all 0.3s ease-in;
+}
+
+.footer .hightech-link a:nth-child(2):hover svg {
+  color: #0a66c2;
+  border: 0;
+  transition: all 0.3s ease-in;
+}
+/* .footer .hightech-link a:nth-child(2):hover svg {
+  color: #1877f2;
+  border: 0;
+  transition: all 0.3s ease-in;
+} */
+
+.footer .hightech-link a:nth-child(3):hover svg {
+  color: #0072b1;
+  border: 0;
+  transition: all 0.3s ease-in;
+}
+
+.footer :is(.short-link a, .help-link a, .contact-link a) {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.footer_links a:hover {
+  border-bottom: 1px solid #fff;
+  margin-bottom: 0.1rem;
+}
+.footer_links-link{
+  font-size: 0.8rem !important;
+}
+.footer_title{
+  font-size: 1.5rem!important;
+
+}
