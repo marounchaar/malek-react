@@ -1,12 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import {
-  FaYoutube,
-  FaLinkedin,
-  FaPhone,
-  FaEnvelope,
-} from "react-icons/fa";
+import { FaYoutube, FaLinkedin, FaPhone, FaEnvelope } from "react-icons/fa";
 import "./Footer.css";
+import logo from "../../assets/logo_white.png";
 
 const Footer = () => {
   const mail = `mailto:info@malikshaar.org`;
@@ -14,13 +10,13 @@ const Footer = () => {
 
   const quickLinks = [
     { name: "السيرة الذاتية", link: "/about" },
-    { name: "المقالات", link: "/articles" },
-    { name: "الكتب", link: "/books" },
+    { name: "المقالات", link: "/Articles" },
+    { name: "الكتب", link: "/Library" },
   ];
 
   const resources = [
-    { name: "الأنشطة والفعاليات", link: "/events" },
-    { name: "الصور والفيديوهات", link: "/gallery" },
+    { name: "الأنشطة والفعاليات", link: "/News" },
+    { name: "الصور والفيديوهات", link: "/Gallery" },
     { name: "اتصل بنا", link: "/contact" },
   ];
 
@@ -31,11 +27,12 @@ const Footer = () => {
           {/* Column 1 - About */}
           <div className="footer-col">
             <Link to="/" className="footer-logo">
+              <img src={logo} />
               <h2>المفتي مالك الشعار</h2>
             </Link>
             <p className="footer-about">
-              المفتي مالك الشعار، أحد أبرز العلماء اللبنانيين، كرّس حياته
-              لخدمة الدين والوطن والدفاع عن قيم الوحدة والاعتدال.
+              المفتي مالك الشعار، أحد أبرز العلماء اللبنانيين، كرّس حياته لخدمة
+              الدين والوطن والدفاع عن قيم الوحدة والاعتدال.
             </p>
 
             <div className="footer-social">

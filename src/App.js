@@ -9,6 +9,7 @@ const Home = lazy(() => import("./Components/Home/Home"));
 const Articles = lazy(() => import("./Components/Articles/Articles"));
 const Library = lazy(() => import("./Components/Library/Library"));
 const Footer = lazy(() => import("./Components/Footer/Footer"));
+const ContactUs = lazy(() => import("./Components/Contact/ContactUs"));
 function App() {
   return (
     <Router>
@@ -18,6 +19,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/Articles" element={<Articles />} />
           <Route path="/Library" element={<Library />} />
+          <Route path="/ContactUs" element={<ContactUs />} />
         </Routes>
       </Suspense>
       <Footer />
