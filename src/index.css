@@ -1,13 +1,18 @@
+@font-face {
+  font-family: 'AXtYouSra';
+  src: url('./assets/fonts/AXtYouSra.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: 'AXtYouSra';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: 'AXtYouSra', source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }

@@ -97,6 +97,7 @@
   margin: 0 1.5rem;
   flex: 1;
   transition: all 0.3s ease;
+  direction: rtl;
 }
 
 .newhistory-card:hover {

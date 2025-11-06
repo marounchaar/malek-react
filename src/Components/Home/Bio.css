@@ -97,3 +97,7 @@
   transform: translateY(-1px);
   box-shadow: 0 18px 36px rgba(12, 44, 63, 0.28);
 }
+.bio-logo{
+  width: 100px;
+  height: 100px;
+}
