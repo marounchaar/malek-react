@@ -5,6 +5,7 @@ import "./App.css";
 
 // Lazy-loaded Home component
 const Home = lazy(() => import("./Components/Home/Home"));
+const Articles = lazy(() => import("./Components/Articles/Articles"));
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <Suspense fallback={<div>Loading...</div>}>
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/Articles" element={<Articles />} />
         </Routes>
       </Suspense>
     </Router>

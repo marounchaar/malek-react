@@ -1,5 +1,6 @@
 .navbarr {
-  background-color: transparent;
+  background-color: #0e164033;
+  box-shadow: 10px 10px 10px #ffffff1a;
   display: flex;
   align-items: center;
   height: 6rem;
@@ -10,7 +11,6 @@
   z-index: 1000;
   transition: all 0.3s ease-in-out;
   direction: rtl;
-  
 }
 
 html {
@@ -171,9 +171,9 @@ html {
 
   .menuIcon {
     display: block;
-    margin-left: auto; 
+    margin-left: auto;
   }
-  
+
   /* hide desktop search on small screens (the menu can include its own search if desired) */
   .navbar-right {
     display: none;
@@ -200,7 +200,7 @@ html {
 
   .navItem {
     width: 100%;
-    padding:0rem 0.6rem ;
+    padding: 0rem 0.6rem;
     text-align: left;
     margin-bottom: 1rem;
   }
