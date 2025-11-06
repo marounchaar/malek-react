@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Fade from "react-reveal/Fade";
+import { Fade } from "react-awesome-reveal"; // ✅ correct import for react-awesome-reveal
 import "./Articles.css";
 import NehmeArticleArray from "./NehmeArticleArray";
 
@@ -34,33 +34,50 @@ const Content = () => {
 
       {/* Fade-in content */}
       {activeData && (
-        // <Fade direction="up" triggerOnce>
-        // <Fade bottom>
-          <div className="regai-overview_section">
-            <h3 className="regai-overview_title" style={{ margin: 0 }}>
-              {activeData.title}
-            </h3>
-
-            {activeData.subtitle && (
-              <h5 className="regai-overview_subtitle">{activeData.subtitle}</h5>
+        <Fade direction="up" triggerOnce>
+          <div className="regai-overview_section" dir="rtl">
+            {/* Title */}
+            {activeData.title && (
+              <h3 className="regai-overview_title my-2">
+                {activeData.title}
+              </h3>
             )}
 
+            {/* Subtitle (render only if exists and not empty) */}
+            {activeData.subtitle && activeData.subtitle.trim() !== "" && (
+              <h5 className="regai-overview_subtitle my-2">{activeData.subtitle}</h5>
+            )}
+
+            {/* Divider */}
             <div className="regai-overview_title-el-divider mb-2"></div>
 
-            {/* Arabic description */}
-            {activeData.description && (
-              <p className="regai-overview_description mb-3" dir="rtl">
+            {/* Description (render only if not empty) */}
+            {activeData.description && activeData.description.trim() !== "" && (
+              <p className="regai-overview_description mb-3">
                 {activeData.description}
               </p>
             )}
 
-            {/* Optional sections */}
+            {/* If "list" exists, render each item */}
+            {activeData.list?.length > 0 && (
+              <ul className="m-3 px-3">
+                {activeData.list.map((item, iIndex) => (
+                  <li key={iIndex} className="mb-3">
+                    {item.title && <h6 className="fw-bold">{item.title}</h6>}
+                    {item.description && <p dangerouslySetInnerHTML={{__html:item.description}}></p>}
+                  </li>
+                ))}
+              </ul>
+            )}
+
             {activeData.section?.length > 0 &&
               activeData.section.map((sec, sIndex) => (
                 <div key={sIndex} className="mb-5">
-                  <h4 className="regai-overview_tit" dir="rtl">
-                    {String.fromCharCode(65 + sIndex)}. {sec.title}
-                  </h4>
+                  {sec.title && (
+                    <h4 className="regai-overview_tit">
+                      {String.fromCharCode(65 + sIndex)}. {sec.title}
+                    </h4>
+                  )}
 
                   {sec.img && (
                     <div className="d-flex align-items-center justify-content-end">
@@ -74,17 +91,17 @@ const Content = () => {
                   )}
 
                   {sec.description && (
-                    <p className="regai-overview_description mb-3" dir="rtl">
+                    <p className="regai-overview_description mb-3">
                       {sec.description}
                     </p>
                   )}
 
                   {sec.list?.length > 0 && (
-                    <ul className="m-0 px-3" dir="rtl">
+                    <ul className="m-0 px-3">
                       {sec.list.map((item, iIndex) => (
                         <li key={iIndex} className="mb-3">
-                          <h6 className="fw-bold">{item.title}</h6>
-                          <p>{item.description}</p>
+                          {item.title && <h6 className="fw-bold">{item.title}</h6>}
+                          {item.description && <p>{item.description}</p>}
                         </li>
                       ))}
                     </ul>
@@ -92,6 +109,7 @@ const Content = () => {
                 </div>
               ))}
           </div>
+        </Fade>
       )}
     </div>
   );

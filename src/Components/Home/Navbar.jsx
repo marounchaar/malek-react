@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { GiHamburgerMenu } from "react-icons/gi";
-// import logo from "../../assets/law.png";
-import logoscrolled from "../../assets/law.png";
+import logo from "../../assets/logo_white.png";
+import logoscrolled from "../../assets/logo_black.png";
 import "./Navbar.css";
 
 const Navbar = ({ Ip }) => {
@@ -70,12 +70,12 @@ const Navbar = ({ Ip }) => {
     <div className={`navbarr ${scrolled ? "scrolled" : ""}`}>
       <div className="navbar-container">
         <Link to="/" className="logo">
-          {/* <img
+          <img
             src={scrolled ? logoscrolled : logo}
             alt="logo"
-            style={{ width: "13rem" }}
+            style={{ width: "5rem" }}
             loading="lazy"
-          /> */}
+          />
         </Link>
         <div className="menuIcon" onClick={() => setMenuOpen(!menuOpen)}>
           <GiHamburgerMenu size={24} color={scrolled ? "#1b2b57" : "white"} />

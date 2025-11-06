@@ -6,11 +6,10 @@ const NehmeArticle = lazy(() => import("./NehmeArticle"));
 
 const bannerContent = [
   {
-    title: "VBS-REG-AI",
-    subtitle:
-      "When the Advanced AI Reads the Regulations, the Compliance Revolution Beyond Human Limits",
+    title: "القيادة في الإيمان",
+    subtitle: "تمكين التغيير بالنزاهة والرؤية",
     description:
-      "How Autonomous AI Agent Societies Are Transforming Financial Regulation From Existential Burden Into Unassailable Competitive Advantage, And Why You Have 3-5 Years to Lead or Be Left Behind",
+      "كرجل دين ومصلح اجتماعي، تجاوزت رسالة الشيخ مالك الشعار حدود المنبر، فدعا إلى المسؤولية المدنية والتعليم والقيادة الأخلاقية في خدمة المجتمع.",
   },
 ];
 const Articles = () => {

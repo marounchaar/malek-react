@@ -34,8 +34,8 @@ const NewHistory = () => {
     <>
       <div className="history-container container my-5">
         <div className="history-header">
-          <h1>Our History</h1>
-          <p>Journey through the milestones that shaped our organization</p>
+          <h1>إرث الاعتدال والإيمان</h1>
+          <p>خط زمني لمسيرة الإيمان والقيادة والصمود</p>
         </div>
 
         <div className="newhistory">

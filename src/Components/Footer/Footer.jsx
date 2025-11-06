@@ -1,146 +1,125 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import {
-  FaChevronRight,
-  FaFacebook,
   FaYoutube,
   FaLinkedin,
   FaPhone,
   FaEnvelope,
 } from "react-icons/fa";
 import "./Footer.css";
-import axios from "axios";
 
-const Footer = ({ Ip }) => {
-  const [raedTitle, setRaedTitle] = useState([]);
-  const mail = `mailto:raed@raedcharafeddine.net`;
-  const phone = `tel:+961 3 431 200`;
-  const  divLists =[
-    {
-        disabled:1,
-        item:"",
-        itemEn:"",
-    },
-    {
-        disabled:1,
-        item:"",
-        itemEn:"",
-    },
-    {
-        disabled:1,
-        item:"",
-        itemEn:"",
-    },
-  ]
+const Footer = () => {
+  const mail = `mailto:info@malikshaar.org`;
+  const phone = `tel:+9613431200`;
+
+  const quickLinks = [
+    { name: "السيرة الذاتية", link: "/about" },
+    { name: "المقالات", link: "/articles" },
+    { name: "الكتب", link: "/books" },
+  ];
+
+  const resources = [
+    { name: "الأنشطة والفعاليات", link: "/events" },
+    { name: "الصور والفيديوهات", link: "/gallery" },
+    { name: "اتصل بنا", link: "/contact" },
+  ];
 
   return (
-    <div
-      className="container-fluid footer wow fadeIn mt-5"
-      data-wow-delay=".3s"
-    >
-      <div className="pt-3 pb-3">
-        <div className="row g-1">
-          <div className="col-lg-3 col-md-6">
-            <Link to="index.html">
-              <h1
-                className="text-white fw-bold d-block"
-                style={{ fontSize: "2rem" }}
-              >
-                المفتي مالك الشعار
-              </h1>
+    <footer className="footer-section">
+      <div className="footer-container">
+        <div className="footer-grid">
+          {/* Column 1 - About */}
+          <div className="footer-col">
+            <Link to="/" className="footer-logo">
+              <h2>المفتي مالك الشعار</h2>
             </Link>
-            {raedTitle.map((data) => (
-              <p
-                className="mt-4 text-light"
-                key={data.id}
-                style={{ fontSize: "1.2rem" }}
-                dangerouslySetInnerHTML={{ __html: data.title }}
-              >
-                مفتي طرابلس والشمال
-              </p>
-            ))}
-            <div className="d-flex hightech-link d-flex align-items-center gap-3">
+            <p className="footer-about">
+              المفتي مالك الشعار، أحد أبرز العلماء اللبنانيين، كرّس حياته
+              لخدمة الدين والوطن والدفاع عن قيم الوحدة والاعتدال.
+            </p>
+
+            <div className="footer-social">
               <Link
                 to="https://www.youtube.com/channel/UC9GzwOFdgadgDeMJwoN3qNQ/videos"
                 target="_blank"
                 className="social_icon"
               >
-                <FaYoutube size={30} />
+                <FaYoutube size={24} />
               </Link>
               <Link
                 to="https://www.linkedin.com/in/raed-h-charafeddine-7a105b324/"
                 target="_blank"
                 className="social_icon"
               >
-                <FaLinkedin size={30} />
+                <FaLinkedin size={24} />
               </Link>
             </div>
           </div>
-          {divLists.map(
-            (resource, idx) => (
-              // resource.title !== "Societal Transformation" && (
-              <div key={idx} className="col-lg-3 col-md-6">
-                <Link to="#" className="h3 text-light footer_title">
-                  {resource.title}
+
+          {/* Column 2 - Quick Links */}
+          <div className="footer-col">
+            <h4 className="footer-title">روابط سريعة</h4>
+            <ul className="footer-links">
+              {quickLinks.map((item, i) => (
+                <li key={i}>
+                  <Link to={item.link}>{item.name}</Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Column 3 - Resources */}
+          <div className="footer-col">
+            <h4 className="footer-title">روابط إضافية</h4>
+            <ul className="footer-links">
+              {resources.map((item, i) => (
+                <li key={i}>
+                  <Link to={item.link}>{item.name}</Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Column 4 - Contact */}
+          <div className="footer-col">
+            <h4 className="footer-title">تواصل معنا</h4>
+            <ul className="footer-contact">
+              <li>
+                <FaPhone size={18} />{" "}
+                <Link to={phone} className="footer-link">
+                  +961 3 431 200
                 </Link>
-                <div className="d-flex flex-column gap-2 mt-3 footer_links">
-                  {resource.list.map(
-                    (eco, i) =>
-                      Number(eco.disabled) === 1 && (
-                        <Link
-                          key={i}
-                          to={`/Page?data=${eco.item}&lang=En`}
-                          className="text-white footer_links-link"
-                        >
-                          {eco.item} | {eco.itemAr}
-                        </Link>
-                      )
-                  )}
-                </div>
-              </div>
-            )
-            // )
-          )}
+              </li>
+              <li>
+                <FaEnvelope size={18} />{" "}
+                <Link to={mail} className="footer-link">
+                  info@malikshaar.org
+                </Link>
+              </li>
+            </ul>
+          </div>
         </div>
-        <hr className="text-light" />
-        <div className="row align-items-center text-white">
-          {/* Left Section */}
-          <div className="col-md-3 text-start text-md-start">
-            <span>
-              <Link to="#" className="text-white">
-                <i className="fas fa-copyright me-2"></i>
-                Raed Charafeddine
-              </Link>
-              , All rights reserved.
-            </span>
-          </div>
 
-          {/* Center Section */}
-          {/* <div className="col-md-6 d-flex flex-column flex-md-row justify-content-center gap-3"> */}
-          <Link to={phone} className="col-md-3 text-light border-primary py-2">
-            <FaPhone size={20} /> +961 3 431 200
-          </Link>
-          <Link to={mail} className="col-md-3 text-light border-primary py-2">
-            <FaEnvelope size={20} /> raed@raedcharafeddine.net
-          </Link>
-          {/* </div> */}
+        <hr className="footer-divider" />
 
-          {/* Right Section */}
-          <div className="col-md-3 text-center text-md-end">
-            <span className="d-flex align-items-center justify-content-md-end gap-1">
-              Designed By
-              <Link
-                to="https://valoores.com"
-                target="_blank"
-                className="text-white text-decoration-underline"
-              >
-                Valoores
-              </Link>
-            </span>
-          </div>
+        {/* Bottom section */}
+        <div className="footer-bottom">
+          <span>
+            © {new Date().getFullYear()} المفتي مالك الشعار. جميع الحقوق محفوظة.
+          </span>
+          <span>
+            تصميم وتطوير{" "}
+            <Link
+              to="https://valoores.com"
+              target="_blank"
+              className="footer-link underline"
+            >
+              Valoores
+            </Link>
+          </span>
         </div>
       </div>
-    </div>
+    </footer>
   );
 };
 

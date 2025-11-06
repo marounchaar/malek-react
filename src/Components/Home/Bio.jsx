@@ -1,10 +1,10 @@
 import React from "react";
 import "./Bio.css";
+import logo from "../../assets/logo_black.png";
 
 const SBiography = () => {
   const shortBiography = [
     {
-      initials: "RC",
       title: "المفتي كركيزة للوحدة الوطنية",
       shortbio: `كرّس الشيخ الدكتور مالك الشعار حياته للخدمة كرئيس ديني مؤسسي للطائفة السنية في شمال لبنان وطرابلس، وهي ولاية ذات أهمية حرجة ضمن المشهد الطائفي والجيوسياسي المعقد في لبنان. كمفتي طرابلس والشمال، يمثل الشيخ الشعار المؤسسة الدينية السنية الرسمية المعتمدة من الدولة، دار الفتوى. تميزت ولايته بالتحدي الاستثنائي المتمثل في توجيه هذه المؤسسة الحيوية عبر فترات من التقلبات الإقليمية الشديدة والصراع الطائفي المحلي العميق، خاصة في طرابلس، التي تخدم تاريخياً كنقطة اشتعال وطنية رئيسية.
 كانت المهمة الأساسية لقيادة الشيخ الشعار هي الدفاع الثابت عن مؤسسات الدولة والترويج الدؤوب للسلم الأهلي. إنجازه مدى الحياة متجذر في هذه الصلابة المؤسسية والتزامه الراسخ بالمبادئ الوطنية المعتدلة في مواجهة التهديدات الأمنية المباشرة والموثوقة. سلطته معترف بها كضرورة هيكلية للحفاظ على التوازن الاجتماعي الديني في الشمال. عندما فشلت الهيئة الرسمية لدار الفتوى في توفير قيادة قوية، كما لوحظ خلال الأزمات، كان هناك ميل فوري ومقلق لـ"هيئات دينية أكثر غير رسمية وأكثر راديكالية" لإزاحة سلطة المؤسسة.
@@ -19,16 +19,14 @@ const SBiography = () => {
       <div className="bio-section">
         <h2 className="section-title">نبذة مختصرة</h2>
         <div className="bio-divider-vert"></div>
-        <p className="section-subtitle">
-          المفتي كركيزة للوحدة الوطنية
-        </p>
+        <p className="section-subtitle">المُفْتِي مَالِك الشَّعَّار</p>
       </div>
 
-      {/* Biography card */}
       {shortBiography.map((item, index) => (
         <div className="bio-card text-center p-5" key={index}>
           <div className="raed_icon mx-auto mb-3">
-            <span className="raed_initials">{item.initials}</span>
+            {/* <span className="raed_initials">{item.initials}</span> */}
+            <img src={logo} alt="AlMuftiMalekAlShaar" className="bio-logo" />
           </div>
 
           <h5 className="bio-role mb-3">{item.title}</h5>

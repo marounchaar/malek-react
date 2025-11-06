@@ -1,52 +1,31 @@
 const historyarray = [
   {
-    year: "1970",
+    year: "٢٠٠٦",
     description:
-      "Foundation of the association Dar Al Amal : With the help of several supporters M. Mozart Chahine founded a shelter to support young girls and women victims of violence and abuse in Zeitouny in Beirut. The shelter had been destroyed during the Lebanese Civil War.",
+      'الدراسة والتمهيد الشرعي والقضائي: حصل الشيخ مالك الشعار على أسس علمية ودينية قوية أهلته ليشغل منصب قاضي شرع في طرابلس، مؤكداً مكانته كصاحب مرجعية دينية وقانونية ثابتة.',
   },
   {
-    year: "1975",
-    description:
-      "The center moved to Sin El Fil. The Ministry of Social Affairs started to support the action of Dar Al Amal till today. ",
+    year: " ٢٠٠٦",
+    description:' انتُخب المفتي رسميًا بعد حصوله على 71 صوتًا مقابل 37 لمنافسه، ليصبح المفتي السابع لطرابلس والشمال منذ استقلال لبنان. تمت الانتخابات وسط مشاركة شخصيات سياسية بارزة، ممّا يعكس إجماعًا سياسيًا حوله',
   },
   {
-    year: "1987",
+    year: "٢٠١٢-٢٠١٣",
     description:
-      "Foundation of specialized prevention centers for children at risk in Bourj Hammoud. 1995 Dar Al Amal started to support imprisoned women in the central women prison in Baabda. ",
+      'ديسمبر 2012: تلقى المفتي تهديدات بالقتل بعد تصاعد الاشتباكات في طرابلس، وأعلن من أوروبا أنه لن يعود إلى لبنان مؤقتًا لأسباب أمنية. …استمر المنفى لمدة 7 أشهر، الأمر الذي أدى إلى فراغ مؤسسي في دار الفتوى، وازدياد نفوذ جماعات دينية متطرفة'
   },
   {
-    year: "2000",
+    year: "٢٠١٣",
     description:
-      " The establishment of partnerships with public and private sectors, both national and international. These partnerships remain till today.",
+      'عاد إلى لبنان تحت حماية أمنية مشددة، مؤكدًا أن “لبنان يحتاج الجميع”.عند وصوله، دعا إلى التهدئة والمحاسبة القانونية إثر التفجيرات التي هزت طرابلس.',
   },
   {
-    year: "2001",
+    year: "٢٠١٤",
     description:
-      "Dar Al Amal started to support imprisoned women in the women prison in Tripoli. 2003 The establishment of a second children center in Nabaa.",
+      'قاد مبادرة "وثيقة طرابلس" التي عُرفت أيضًا بـ "ميثاق السلم الأهلي"، وجمعت شخصيات دينية وسياسية واقتصادية لتهدئة الوضع في المدينة. وضعت الوثيقة دُستورًا مدنيًا محليًا لترسيخ السلم الاجتماعي وتخليص طرابلس من الاستقطاب المسلح.',
   },
   {
-    year: "2003",
-    description: "The establishment of a second children center in Nabaa.",
-  },
-  {
-    year: "2009",
-    description:
-      "Implementation of a social rehabilitation and reintegration project in Sabra addressed to young girls and women victims of violence and exploitation in collaboration with the “Association for Women Programs”. Dar Al Amal started to support imprisoned women in the women prison in Zahlé.",
-  },
-  {
-    year: "2010",
-    description:
-      "Dar Al Amal developed handicraft workshops and participated in several exhibitions in Lebanon and abroad.",
-  },
-  {
-    year: "2011",
-    description:
-      "Dar Al Amal bought a property in Choueifat – Amrousiyeh, which is located in a very calm environment. It is to become a new shelter",
-  },
-  {
-    year: "2013",
-    description:
-      "Setting the Cornerstone to renovate Dar Al Amal's new shelter in Choueifat with  Wael Abou Faour, the Minister of Social Affairs and ABC Chairman MP Robert Fadel, as auspices. Furthermore Dar Al Amal's President Habib Hatem, the Mayor of Choueifat Melhem Al Souki and Dar Al Amal senior officials have been present.",
+    year: "٢٠١٩",
+    description: 'أعلن المفتي دعمه للاحتجاجات الشعبية التي انطلقت في أكتوبر 2019، واصفًا إيّاها بأنّها “ضمير شعب عظيم ونبيل”.وجّه نصائح للمشايخ بعدم ارتداء اللباس الديني أثناء التظاهر لتجنب تسييس الحراك دينيًا.',
   },
 ];
 export default historyarray;
