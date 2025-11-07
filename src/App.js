@@ -7,7 +7,9 @@ import Header from "./Components/Header";
 const Home = lazy(() => import("./Components/Home/Home"));
 const Articles = lazy(() => import("./Components/Articles/Articles"));
 const Library = lazy(() => import("./Components/Library/Library"));
-const Footer = lazy(() => import("./Components/Footer/Footer"));const Youtube = lazy(() => import("./Components/Youtube/Youtube"));
+const Footer = lazy(() => import("./Components/Footer/Footer"));
+const ContactUs = lazy(() => import("./Components/Contact/ContactUs"));
+const Youtube = lazy(() => import("./Components/Youtube/Youtube"));
 
 function App() {
   return (
@@ -18,6 +20,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/Articles" element={<Articles />} />
           <Route path="/Library" element={<Library />} />
+          <Route path="/ContactUs" element={<ContactUs />} />
           <Route path="/Youtube" element={<Youtube />} />
         </Routes>
       </Suspense>

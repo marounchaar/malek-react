@@ -1,3 +1,9 @@
+@font-face {
+  font-family: 'AXtYouSra';
+  src: url('./assets/fonts/AXtYouSra.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
 :root{
   --first-color:#c9d2c6;
   --second-color:#85a98d;
@@ -7,6 +13,7 @@
 }
 .App {
   text-align: center;
+  font-family: 'AXtYouSra';
 }
 
 .App-logo {

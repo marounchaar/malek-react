@@ -5,6 +5,13 @@ import Carousel2 from "../../assets/carousel/mufti_carousel2.avif";
 import Carousel3 from "../../assets/carousel/mufti_carousel3.avif";
 import Carousel4 from "../../assets/carousel/mufti_carousel4.avif";
 const CarouselData = [
+  // {
+  //   img: Carousel2,
+  //   title: "رجلُ الدولة... وسط العاصفة",
+  //   susbtitle: "",
+  //   description:
+  //     "حين اشتعلت النار في طرابلس، لم يختر المفتي الشعار الهروب. بل اختار المواجهة بالاعتدال... وأصرّ أنه لا خلاص للبنان إلا بالعدالة، والمؤسسات، والعيش المشترك.",
+  // },
   {
     img: Carousel2,
     title: "صوت الاعتدال",
