@@ -1,49 +1,60 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./Youtube.css";
 
 function Youtube() {
-  // Array of YouTube videos - replace the video IDs with your actual YouTube video IDs
   const videos = [
     {
-      id: "UfGv0WQFNmk",
-      title: "Interview with Sheikh",
-      description: "An insightful discussion about modern Islamic perspectives and challenges."
+      id: "pDyo4y_xMQU",
+      title: "",
+      description: "المفتي الدكتور الشيخ مالك الشعار",
     },
     {
-      id: "UfGv0WQFNmk",
-      title: "Islamic Finance Explained",
-      description: "Understanding the principles of Islamic finance in today's economic landscape."
+      id: "R2Y-2vfd1f4",
+      title: "",
+      description:
+        "في حلقة إستثنائية بمناسبة شهر رمضان المبارك.. المفتي الشيخ مالك الشعار ضيف بدنا الحقيقة مع وليد عبود",
     },
     {
-      id: "UfGv0WQFNmk",
-      title: "Monthly Reflection",
-      description: "Monthly spiritual guidance and reflections on contemporary issues."
+      id: "aUzIdNLa9ik",
+      title: "",
+      description:
+        'كرامة الإنسان." سماحة مفتي طرابلس والشمال الدكتور الشيخ مالك الشعار حفظه الله تعالى',
     },
     {
-      id: "UfGv0WQFNmk",
-      title: "Q&A Session",
-      description: "Answering common questions from the community about Islamic practices."
+      id: "Z7HOpJeyA8M",
+      title: "",
+      description: "مؤتمر صحافي لمفتي طرابلس والشمال الشيخ مالك الشعار",
     },
     {
-      id: "UfGv0WQFNmk",
-      title: "Special Event Coverage",
-      description: "Highlights from our recent community gathering and religious celebrations."
+      id: "fT9aUX8SGTY",
+      title: "",
+      description:
+        "رسالة سماحة المفتي طرابلس والشمال الشيخ الدكتور مالك الشعار لمناسبة عيد الفطر السعيد",
     },
     {
-      id: "UfGv0WQFNmk",
-      title: "Educational Series",
-      description: "Part of our ongoing educational series about Islamic teachings and principles."
-    }
+      id: "كلمة مفتي طرابلس والشمال د. مالك الشعار بمناسبة حلول شهر رمضان المبارك",
+      title: "",
+      description:
+        "كلمة مفتي طرابلس والشمال د. مالك الشعار بمناسبة حلول شهر رمضان المبارك",
+    },
   ];
-
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <div className="youtube-container">
       <div className="youtube-hero">
-        <h1>Video Gallery</h1>
-        <p>Explore our collection of inspiring and educational content</p>
+        <h1>منبر سماحة المفتي مالك الشعار</h1>
+        <p>
+          مختارات من الخطب والمحاضرات والمقابلات التي تُجسّد فكر الاعتدال ورسالة
+          الإيمان والوطن.
+        </p>
       </div>
-      
-      <div className="videos-grid" style={{ maxWidth: '1400px', margin: '0 auto', padding: '0 2rem' }}>
+
+      <div
+        className="videos-grid"
+        style={{ maxWidth: "1400px", margin: "0 auto", padding: "0 2rem" }}
+      >
         {videos.map((video) => (
           <div key={video.id} className="video-card">
             <div className="video-thumbnail">

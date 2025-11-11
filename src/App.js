@@ -21,7 +21,7 @@ function App() {
           <Route path="/Articles" element={<Articles />} />
           <Route path="/Library" element={<Library />} />
           <Route path="/ContactUs" element={<ContactUs />} />
-          <Route path="/Youtube" element={<Youtube />} />
+          <Route path="/Videos" element={<Youtube />} />
         </Routes>
       </Suspense>
       <Footer />

@@ -1,4 +1,4 @@
-import React, { Suspense,lazy} from "react";
+import React, { Suspense, lazy, useEffect } from "react";
 import "./Articles.css";
 import bannerImage from "../../assets/carousel/mufti_carousel2.avif";
 import Fade from "react-reveal/Fade";
@@ -13,6 +13,9 @@ const bannerContent = [
   },
 ];
 const Articles = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <div className="articles-pagee">
       {/* Banner Section */}
@@ -22,12 +25,8 @@ const Articles = () => {
       >
         <div className="articles-banner-content">
           <h1>{bannerContent[0].title}</h1>
-          <h3>
-            {bannerContent[0].subtitle}
-          </h3>
-          <p>
-            {bannerContent[0].description}
-          </p>
+          <h3>{bannerContent[0].subtitle}</h3>
+          <p>{bannerContent[0].description}</p>
         </div>
       </div>
       <div

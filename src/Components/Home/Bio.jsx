@@ -1,6 +1,8 @@
 import React from "react";
+import {Link} from "react-router-dom";
 import "./Bio.css";
 import logo from "../../assets/logo_black.png";
+import Almufti from "../../assets/pdf/EN & AR Mufti Malek Al-Shaar_  A Lifetime of Institutional Leadership, Reconciliation, and Resilience in the Levant.pdf";
 
 const SBiography = () => {
   const shortBiography = [
@@ -19,7 +21,7 @@ const SBiography = () => {
       <div className="bio-section">
         <h2 className="section-title">نبذة مختصرة</h2>
         <div className="bio-divider-vert"></div>
-        <p className="section-subtitle">المُفْتِي مَالِك الشَّعَّار</p>
+        <p className="section-subtitle">المُفْتِي مَالِك الشّعَار</p>
       </div>
 
       {shortBiography.map((item, index) => (
@@ -32,8 +34,16 @@ const SBiography = () => {
           <h5 className="bio-role mb-3">{item.title}</h5>
 
           <p className="bio-text">{item.shortbio}</p>
-
-          <button className="bio-btn mt-4">اقرأ المزيد →</button>
+          <Link
+            to={Almufti}
+            target="_blank"
+            rel="noopener noreferrer"
+            // className="read-more-link"
+            className="bio-btn mt-4"
+          >
+            اقرأ المزيد →
+          </Link>
+          {/* <button className="bio-btn mt-4">اقرأ المزيد →</button> */}
         </div>
       ))}
     </div>

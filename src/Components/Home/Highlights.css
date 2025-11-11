@@ -30,6 +30,7 @@
 }
 
 .highlight-card {
+  text-decoration: none;
   background: white;
   border-radius: 16px;
   overflow: hidden;

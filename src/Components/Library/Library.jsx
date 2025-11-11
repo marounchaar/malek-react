@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./Library.css";
+import {Link} from "react-router-dom"
 import bannerImage from "../../assets/carousel/mufti_carousel2.avif";
-import Book1 from "../../assets/books/book1.png"
-import Book2 from "../../assets/books/book2.png"
-import Book3 from "../../assets/books/book3.png"
+import Book1 from "../../assets/books/book1.png";
+import Book2 from "../../assets/books/book2.png";
+import Book3 from "../../assets/books/book3.png";
+import PdfBook1 from "../../assets/pdf/الكلم الطيب.pdf"
+import PdfBook2 from "../../assets/pdf/المفتي الشيخ مالك الشعار رجل الاعتدال والحوار.pdf"
+import PdfBook3 from "../../assets/pdf/بسمات.pdf"
 import Banner from "../Banner";
 
 const books = [
@@ -11,30 +15,26 @@ const books = [
     title: "سماحة المفتي الدكتور الشيخ مالك الشعار الكلم الطيب",
     // author: "المفتي مالك الشعار",
     cover: Book1,
-    pdf: "/pdfs/book1.pdf",
+    pdf: PdfBook1,
   },
   {
     title: "المفتي الشيخ مالك الشعار رجل الاعتدال والحوار",
     // author: "المفتي مالك الشعار",
     cover: Book2,
-    pdf: "/pdfs/book2.pdf",
+    pdf: PdfBook2,
   },
   {
     title: "بسمات",
     // author: "المفتي مالك الشعار",
     cover: Book3,
-    pdf: "/pdfs/book3.pdf",
+    pdf: PdfBook3,
   },
 ];
-const bannerContent = [
-  {
-    title: "القيادة في الإيمان",
-    subtitle: "تمكين التغيير بالنزاهة والرؤية",
-    description:
-      "كرجل دين ومصلح اجتماعي، تجاوزت رسالة الشيخ مالك الشعار حدود المنبر، فدعا إلى المسؤولية المدنية والتعليم والقيادة الأخلاقية في خدمة المجتمع.",
-  },
-];
+
 const Library = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <>
       <Banner img={bannerImage} />
@@ -49,7 +49,8 @@ const Library = () => {
 
         <div className="library-grid container">
           {books.map((book, index) => (
-            <div key={index} className="book-card">
+            <Link to={book.pdf} target="_blank"
+                    rel="noopener noreferrer" key={index} className="book-card">
               <div className="book-cover-wrapper">
                 <img src={book.cover} alt={book.title} className="book-cover" />
                 <div className="book-overlay">
@@ -67,7 +68,7 @@ const Library = () => {
                 <h3 className="book-title">{book.title}</h3>
                 <p className="book-author">{book.author}</p>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </section>
